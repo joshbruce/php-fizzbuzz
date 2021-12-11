@@ -16,6 +16,13 @@ class ProceduralTest extends TestCase
         return ob_get_clean();
     }
 
+    private function conditionalTernarySubject(): string
+    {
+        ob_start();
+        include __DIR__ . '/../src/conditionals-ternary.php';
+        return ob_get_clean();
+    }
+
     private function switchSubject(): string
     {
         ob_start();
@@ -40,26 +47,29 @@ class ProceduralTest extends TestCase
         $ns = $end - $start;
         $ms = $ns/1e+6;
 
-        $expected = <<<output
-            1
-            2
-            Fizz
-            4
-            Buzz
-            Fizz
-            7
-            8
-            Fizz
-            Buzz
-            11
-            Fizz
-            13
-            14
-            FizzBuzz
+        $this->assertSame($this->output(), $subject);
 
-            output;
+        $this->assertLessThan(0.06, $ms);
+    }
 
-        $this->assertSame($expected, $subject);
+    /**
+     * @test
+     */
+    public function zero_through_fifteen_conditionals_ternary(): void
+    {
+        // Arrange
+        $start = hrtime(true);
+
+        // Act
+        $subject = $this->conditionalTernarySubject();
+
+        // Assert
+        $end = hrtime(true);
+
+        $ns = $end - $start;
+        $ms = $ns/1e+6;
+
+        $this->assertSame($this->output(), $subject);
 
         $this->assertLessThan(0.06, $ms);
     }
@@ -81,7 +91,14 @@ class ProceduralTest extends TestCase
         $ns = $end - $start;
         $ms = $ns/1e+6;
 
-        $expected = <<<output
+        $this->assertSame($this->output(), $subject);
+
+        $this->assertLessThan(0.08, $ms);
+    }
+
+    private function output(): string
+    {
+        return <<<output
             1
             2
             Fizz
@@ -99,9 +116,5 @@ class ProceduralTest extends TestCase
             FizzBuzz
 
             output;
-
-        $this->assertSame($expected, $subject);
-
-        $this->assertLessThan(0.08, $ms);
     }
 }
