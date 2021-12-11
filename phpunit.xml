@@ -13,15 +13,15 @@
 	xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
   <coverage>
     <include>
-      <directory suffix=".php">./src/</directory>
+      <directory suffix=".php">./procedural/src/</directory>
     </include>
     <exclude>
       <directory>vendor/</directory>
     </exclude>
   </coverage>
   <testsuites>
-    <testsuite name="base">
-      <directory suffix="Test.php">./tests/</directory>
+    <testsuite name="procedural">
+      <directory suffix="Test.php">./procedural/tests/</directory>
     </testsuite>
   </testsuites>
   <php>

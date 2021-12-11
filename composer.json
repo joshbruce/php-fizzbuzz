@@ -18,6 +18,7 @@
   },
   "autoload-dev": {
     "psr-4": {
+      "JoshBruce\\FizzBuzzProcedural\\Tests\\": "./procedural/tests"
     }
   },
   "config": {
@@ -27,8 +28,8 @@
   "scripts": {
     "prod": "@production",
     "production": ["@style", "@stan", "@test"],
-    "style": "./vendor/bin/phpcs --standard=phpcs.xml -p ./src",
+    "style": "./vendor/bin/phpcs --standard=phpcs.xml -p ./procedural/src",
     "stan": "./vendor/bin/phpstan analyze",
-    "test": "./vendor/bin/pest"
+    "test": "./vendor/bin/phpunit"
   }
 }
