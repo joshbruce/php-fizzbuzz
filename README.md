@@ -1,21 +1,21 @@
-> Note: Delete the labels in the new repo and use https://github.com/jvandemo/copy-github-labels-cli to copy the ones found here to the new repo
+# Experiments in FizzBuzz
 
-# 8fold {Name of product or project} for {language or framework}
+I've never done a FizzBuzz exercise despite it seeming almost like a right-of-passage for developers. Of course, I'm still coming to grips with not actively avoiding calling myself a developer—tinkerer or questioner may be more appropriate.
 
-{brief description}
+I tend to look at rules and best practices and say, "But why though?" or "I wonder what would happen if."
 
-## Installation
+Anyhoo, as of this writing I can say I have very few hard opinions on things. I've seen too many things work and more that appear to work almost in spite of themselves to say, "This is the one and only way! And, if you're not doing it this way, you're doing it wrong."
 
-{how does one install the product}
+So, with that preamble out of the way, here we are. A playground of styles and approaches one might say.
 
-## Usage
+Each project folder represents an attempt at a particular style or approach of implementing [Fizz buzz](https://en.wikipedia.org/wiki/Fizz_buzz) and Fizz buzz variations.
 
-{brief example of how to use the product}
+## 🗒 + ⚠️: A note and word of caution
 
-## Details
+I'm not a computer scientist. I don't hold a degree in it either. I've never taken college-level courses.
 
-{origin story, principles, etc.}
+Basically, all the caveats ever.
 
-## Other
+When I talk about things I may use incorrect terms or may not know of some nuance in those terms.
 
-{links or descriptions or license, versioning, and governance}
+I those cases, please feel free to comment, post issues, and so on to help me improve my articulation.
