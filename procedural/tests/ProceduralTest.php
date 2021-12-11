@@ -9,6 +9,13 @@ use PHPUnit\Framework\TestCase;
 
 class ProceduralTest extends TestCase
 {
+    private function functionSubject(): string
+    {
+        ob_start();
+        include __DIR__ . '/../src/functions.php';
+        return ob_get_clean();
+    }
+
     private function conditionalSubject(): string
     {
         ob_start();
@@ -49,7 +56,7 @@ class ProceduralTest extends TestCase
 
         $this->assertSame($this->output(), $subject);
 
-        $this->assertLessThan(0.06, $ms);
+        $this->assertLessThan(0.09, $ms);
     }
 
     /**
@@ -71,7 +78,29 @@ class ProceduralTest extends TestCase
 
         $this->assertSame($this->output(), $subject);
 
-        $this->assertLessThan(0.06, $ms);
+        $this->assertLessThan(0.1, $ms);
+    }
+
+    /**
+     * @test
+     */
+    public function zero_through_fifteen_functions(): void
+    {
+        // Arrange
+        $start = hrtime(true);
+
+        // Act
+        $subject = $this->functionSubject();
+
+        // Assert
+        $end = hrtime(true);
+
+        $ns = $end - $start;
+        $ms = $ns/1e+6;
+
+        $this->assertSame($this->output(), $subject);
+
+        $this->assertLessThan(0.18, $ms);
     }
 
     /**
@@ -93,7 +122,7 @@ class ProceduralTest extends TestCase
 
         $this->assertSame($this->output(), $subject);
 
-        $this->assertLessThan(0.08, $ms);
+        $this->assertLessThan(0.12, $ms);
     }
 
     private function output(): string
