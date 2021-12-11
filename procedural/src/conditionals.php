@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 // Uses guard clauses and forced continuation.
-for ($i = 0; $i <= 15; $i++) {
+for ($i = 1; $i <= 15; $i++) {
     if ($i % 15 === 0) {
         echo 'FizzBuzz' . "\n";
         continue;
