@@ -43,7 +43,7 @@ function func_answer(
     int $turn,
     callable $rule,
     callable $answer,
-    array $next = []
+    array $next = array()
 ): string {
     if ($rule($turn)) {
         return $answer();
