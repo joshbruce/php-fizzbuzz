@@ -47,12 +47,12 @@ function func_answer(
 ): string {
     if ($rule($turn)) {
         return $answer();
-
-    } elseif (func_list_has_three_values($next)) {
-        // recursion
-        return func_answer($turn, $next[0], $next[1], $next[2]);
-
     }
+
+    if (func_list_has_three_values($next)) {
+        return func_answer($turn, ...$next); // recursion
+    }
+
     return func_turn_answer($turn);
 }
 
