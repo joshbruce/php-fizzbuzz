@@ -107,7 +107,7 @@ function func_buzz_answer(): string
 
 function func_fizz_buzz_answer(): string
 {
-    return func_fizz_answer() . func_buzz_answer();
+    return func_concatenate_string(func_fizz_answer(), func_buzz_answer());
 }
 
 function func_turn_answer(int $turn): string
