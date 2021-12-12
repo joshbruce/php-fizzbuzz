@@ -2,26 +2,66 @@
 
 declare(strict_types=1);
 
-function func_fizz_buzz(int $high, int $low = 1, string $output = ''): string
+function func_fizz_buzz(int $high, int $low = 1): string
 {
-    return concatenate_string(
+    // Builds and executes the game based on parameters.
+    return func_concatenate_string(
         implode(
-            new_line_char(),
-            array_map(
-                'func_answer_for',
-                range($low, $high)
+            func_new_line_char(),
+            array_map( // get answer for each element in range
+                'func_answer_for', // use this function on each turn
+                range($low, $high) // create array of turns
             )
         ),
-        new_line_char()
+        func_new_line_char()
     );
 }
 
-function new_line_char(): string
+function func_answer_for(int $turn): string
+{
+    // Establish rules for game, which could be expanded or modified, if desired.
+    return func_answer(
+        $turn,
+        'func_is_multiple_of_three_and_five',
+        'func_fizz_buzz_answer',
+        [
+            'func_is_multiple_of_five',
+            'func_buzz_answer',
+            [
+                'func_is_multiple_of_three',
+                'func_fizz_answer',
+                []
+            ]
+        ]
+    );
+}
+
+/**
+ * @param array<int, mixed> $next
+ */
+function func_answer(
+    int $turn,
+    callable $rule,
+    callable $answer,
+    array $next = []
+): string {
+    if ($rule($turn)) {
+        return $answer();
+
+    } elseif (func_list_has_three_values($next)) {
+        // recursion
+        return func_answer($turn, $next[0], $next[1], $next[2]);
+
+    }
+    return func_turn_answer($turn);
+}
+
+function func_new_line_char(): string
 {
     return "\n";
 }
 
-function concatenate_string(string $prefix, string $suffix): string
+function func_concatenate_string(string $prefix, string $suffix): string
 {
     return $prefix . $suffix;
 }
@@ -47,63 +87,12 @@ function func_is_multiple_of_three_and_five(int $multiplier): bool
         func_is_multiple_of_five($multiplier);
 }
 
-function func_answer_for(int $turn): string
-{
-    return func_answer(
-        $turn,
-        'func_is_multiple_of_three_and_five',
-        'func_fizz_buzz_answer',
-        [
-            'func_is_multiple_of_five',
-            'func_buzz_answer',
-            [
-                'func_is_multiple_of_three',
-                'func_fizz_answer'
-            ]
-        ]
-    );
-}
-
-/**
- * @param array<int, mixed> $next
- */
-function func_answer(
-    int $turn,
-    string $rule,
-    string $answer,
-    array $next = []
-): string {
-    if (
-        is_callable($rule) and // to pass static analysis
-        $rule($turn) and
-        is_callable($answer) // to pass static analysis
-    ) {
-        return $answer();
-
-    } elseif (func_list_has_three_values($next)) {
-        return func_answer($turn, $next[0], $next[1], $next[2]);
-
-    } elseif (func_list_has_two_values($next)) {
-        return func_answer($turn, $next[0], $next[1]);
-
-    }
-    return func_turn_answer($turn);
-}
-
 /**
  * @param array<int, mixed> $list
  */
 function func_list_has_three_values(array $list): bool
 {
     return count($list) === 3;
-}
-
-/**
- * @param array<int, mixed> $list
- */
-function func_list_has_two_values(array $list): bool
-{
-    return count($list) === 2;
 }
 
 function func_fizz_answer(): string
