@@ -19,7 +19,8 @@
   "autoload-dev": {
     "psr-4": {
       "JoshBruce\\FizzBuzzProcedural\\Tests\\": "./procedural/tests",
-      "JoshBruce\\FizzBuzzFunctional\\Tests\\": "./functional/tests"
+      "JoshBruce\\FizzBuzzFunctional\\Tests\\": "./functional/tests",
+      "JoshBruce\\FizzBuzzOopStatic\\Tests\\": "./oop-static/tests"
     }
   },
   "config": {
@@ -31,7 +32,8 @@
     "production": ["@style", "@stan", "@test"],
     "style": [
       "./vendor/bin/phpcs --standard=phpcs.xml -p ./procedural/src",
-      "./vendor/bin/phpcs --standard=phpcs.xml -p ./functional/src"
+      "./vendor/bin/phpcs --standard=phpcs.xml -p ./functional/src",
+      "./vendor/bin/phpcs --standard=phpcs.xml -p ./oop-static/src"
     ],
     "stan": "./vendor/bin/phpstan analyze",
     "test": "./vendor/bin/phpunit"

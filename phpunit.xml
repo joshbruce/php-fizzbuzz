@@ -15,6 +15,7 @@
     <include>
       <directory suffix=".php">./procedural/src/</directory>
 	  <directory suffix=".php">./functional/src/</directory>
+	  <directory suffix=".php">./oop-static/src/</directory>
     </include>
     <exclude>
       <directory>vendor/</directory>
@@ -24,8 +25,11 @@
     <testsuite name="procedural">
       <directory suffix="Test.php">./procedural/tests/</directory>
     </testsuite>
-    <testsuite name="procedural">
+    <testsuite name="functional">
       <directory suffix="Test.php">./functional/tests/</directory>
+    </testsuite>
+    <testsuite name="oop-static">
+      <directory suffix="Test.php">./oop-static/tests/</directory>
     </testsuite>
   </testsuites>
   <php>
