@@ -49,12 +49,61 @@ function func_is_multiple_of_three_and_five(int $multiplier): bool
 
 function func_answer_for(int $turn): string
 {
-    return match (true) {
-        func_is_multiple_of_three_and_five($turn) => func_fizz_buzz_answer(),
-        func_is_multiple_of_five($turn) => func_buzz_answer(),
-        func_is_multiple_of_three($turn) => func_fizz_answer(),
-        default => func_turn_answer($turn)
-    };
+    return func_answer(
+        $turn,
+        'func_is_multiple_of_three_and_five',
+        'func_fizz_buzz_answer',
+        [
+            'func_is_multiple_of_five',
+            'func_buzz_answer',
+            [
+                'func_is_multiple_of_three',
+                'func_fizz_answer'
+            ]
+        ]
+    );
+}
+
+/**
+ * @param array<int, mixed> $next
+ */
+function func_answer(
+    int $turn,
+    string $rule,
+    string $answer,
+    array $next = []
+): string {
+    if (
+        is_callable($rule) and // to pass static analysis
+        $rule($turn) and
+        is_callable($answer) // to pass static analysis
+    ) {
+        return $answer();
+
+    } elseif (func_list_has_three_values($next)) {
+        return func_answer($turn, $next[0], $next[1], $next[2]);
+
+    } elseif (func_list_has_two_values($next)) {
+        return func_answer($turn, $next[0], $next[1]);
+
+    }
+    return func_turn_answer($turn);
+}
+
+/**
+ * @param array<int, mixed> $list
+ */
+function func_list_has_three_values(array $list): bool
+{
+    return count($list) === 3;
+}
+
+/**
+ * @param array<int, mixed> $list
+ */
+function func_list_has_two_values(array $list): bool
+{
+    return count($list) === 2;
 }
 
 function func_fizz_answer(): string
