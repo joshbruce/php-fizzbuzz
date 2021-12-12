@@ -56,7 +56,7 @@ class ProceduralTest extends TestCase
 
         $this->assertSame($this->output(), $subject);
 
-        $this->assertLessThan(0.09, $ms);
+        $this->assertLessThan(0.13, $ms);
     }
 
     /**
@@ -78,7 +78,7 @@ class ProceduralTest extends TestCase
 
         $this->assertSame($this->output(), $subject);
 
-        $this->assertLessThan(0.1, $ms);
+        $this->assertLessThan(0.11, $ms);
     }
 
     /**
@@ -100,7 +100,7 @@ class ProceduralTest extends TestCase
 
         $this->assertSame($this->output(), $subject);
 
-        $this->assertLessThan(0.18, $ms);
+        $this->assertLessThan(0.3, $ms);
     }
 
     /**
