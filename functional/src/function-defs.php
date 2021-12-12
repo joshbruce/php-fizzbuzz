@@ -24,15 +24,15 @@ function func_answer_for(int $turn): string
         $turn,
         'func_is_multiple_of_three_and_five',
         'func_fizz_buzz_answer',
-        [
+        array(
             'func_is_multiple_of_five',
             'func_buzz_answer',
-            [
+            array(
                 'func_is_multiple_of_three',
                 'func_fizz_answer',
-                []
-            ]
-        ]
+                array()
+            )
+        )
     );
 }
 
