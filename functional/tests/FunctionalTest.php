@@ -35,7 +35,7 @@ class FunctionalTest extends TestCase
 
         $this->assertSame($this->output(), $subject);
 
-        $this->assertLessThan(0.08, $ms);
+        $this->assertLessThan(0.18, $ms);
     }
 
     /**
