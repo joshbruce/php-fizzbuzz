@@ -1,11 +1,5 @@
-# Functional Fizz buzz
+# OOP static Fizz buzz
 
-Functional programming has a lot of characteristics I appreciate.
+This style is similar to the functional style, at least the way I look at it.
 
-1. No state.
-2. No variable assignment.
-3. Pure functions: No side-effects.
-
-`functions.php` stores the I/O portion while `function-defs.php` holds all the defined functions to make it work.
-
-Any function prefixed with `func` is defined by me, specifically for this implementation while those without `func` are standard PHP functions.
+With everything be a function we don't need to worry too much—or even use—variable assignment. Further, by using static classes we gain the encapsulation component of object-oriented programming, which reduces the potential for naming collisions. Finally, we also gain the ability to add visibility to differentiate between the public API, which can sometimes help in getting up to speed on how the program workes.
