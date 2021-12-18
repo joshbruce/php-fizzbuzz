@@ -13,6 +13,18 @@ namespace JoshBruce\FizzBuzzOopStatic;
  *
  * IN CSS I do something similar with custom properties; front-loaded at the top.
  * However, in executable code, I typically try to front-load differently.
+ *
+ * I also tend to prefer the approach that everything is a method. I find the
+ * everything is a method approach to be a way of automatically enforcing
+ * lazy-loading or deferring to last possible moment.
+ *
+ * I find the everything is a method approach to also facilitate modification
+ * without changing the call signatures easier; fewer breaking changes. For
+ * example, if we wanted to modify the value some of the constants return or
+ * perform a calculation and this was our starting point, we would need to create
+ * the function, recommend users use the function instead, and the deprecate the
+ * constants, whereas if everything starts as a method (with optional cached
+ * property) we could just modify the guts of the method itself.
  */
 abstract class FizzBuzzFunctionsAndAssignments
 {
